@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AuthHeader from '../AuthCommon/AuthHeader';
 import Footer from "../../Common/Footer"
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
 
+
 export default function Login() {
+    const [email,setEmail] = useState("")
+    const [password,setPassword] = useState("")
 
     return (
         <>
@@ -25,9 +28,20 @@ export default function Login() {
                         <div className='mainform'>
                             <div className='Login_form '>
                                 <Form.Label className="mt-3 fromlabel"  >Email</Form.Label>
-                                <Form.Control type="email" placeholder="Your Email" />
+                                <Form.Control 
+                                type="email" 
+                                placeholder="Your Email"
+                                name="email"
+                                onChange={(e) => setEmail(e.target.value)}/>
+                                
+                                <p className='error' id="email"> *Enter Your Email</p>
                                 <Form.Label className="mt-3 fromlabel">Password</Form.Label>
-                                <Form.Control type="password" placeholder="Your Password" />
+                                <Form.Control 
+                                type="password" 
+                                placeholder="Your Password"
+                                name="password"
+                                onChange={(e) => setPassword(e.target.value)} />
+                                  <p className='error' id="password"> *Enter Your Password</p>
                                 <Form.Group className="mb-3 fromlabel" controlId="formBasicCheckbox">
                                     <Form.Check type="checkbox" label="Remember Me" />
                                 </Form.Group>
